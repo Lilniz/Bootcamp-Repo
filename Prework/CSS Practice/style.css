@@ -1,0 +1,9 @@
+h1 {
+    text-align: center;
+}
+.styledFont {
+    font-family: Cambria; font-variant-caps: all-small-caps;
+}
+#styledImage {
+    border-style:groove; border-width: 40px; border-color:darkcyan; margin-left:10%;
+}
