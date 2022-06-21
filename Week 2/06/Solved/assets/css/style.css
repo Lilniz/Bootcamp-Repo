@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+header {
+  padding: 40px;
+  text-align: center;
+  background: #13293d;
+  color: #fff;
+}
+
+/* 
+What happens when we set the display property to flex? 
+TODO: Makes the nav into a flex box/container which only directs the direct child elements and gives a background color.
+*/
+nav {
+  display:flex;
+  background-color: #d8a47f;
+}
+
+nav a {
+  color: #13293d;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* 
+What is the flex-wrap property? 
+TODO: Controls the amount of lines within the flex box, eliminating overflow incidents of the direct child elements.
+*/
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+aside {
+  flex: 1;
+  background-color: #b9c6ae;
+  padding: 80px;
+  text-align: center;
+}
+
+
+footer {
+  padding: 20px;
+  text-align: center;
+  background: #13293d;
+  color: #fff;
+}
+
+/* 
+What does the justify-content property do? 
+TODO: Aligns direct-child elements on the main/x-axis.
+*/
+.products {
+  flex: 4;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 
+What is the flex property a shorthand property for?
+What is it doing here? 
+TODO: Shorthand for flex-grow, flex-shrink, flex-basis.
+*/
+.card {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 10px;
+  flex: 0 0 400px;
+}
+
+.card header {
+  padding: 20px;
+}
+
+.card p {
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+}
+
+/* 
+What does the flex-direction property define?
+What is it doing here? 
+TODO: How your flex box/container appears, whether row or column. It is creating a column if the width goes below 768px, as opposed to the default row.
+*/
+@media screen and (max-width: 768px) {
+  main,
+  nav {
+    flex-direction: column;
+  }
+}
