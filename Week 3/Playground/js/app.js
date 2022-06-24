@@ -126,3 +126,159 @@ console.log(!isDarkMode); // Double 'not', so is false!
 var headerEl = document.querySelector('h1');
 headerEl.innerText = 'Something Else';
 headerEl.style.color = 'red';
+
+
+// Power of comparison and operator variables.
+var a = 15;
+var b = 10;
+// var amount = a || b;
+
+console.log(a > b); // false
+console.log(a + b); // 10
+console.log(b / a); // 2
+
+console.log(a || 100 || 3 || b); // 0
+
+// Conditional Statement "IF". Won't run if false, as well as won't show in console.
+if (a > b) {
+    console.log("It works!");
+    console.log("Something Else");
+    console.log("And one more");
+    // console.alert("Hi there!")
+}
+
+// "IF" conditional statments work on the basis of truth!
+if (a < b) {
+    console.log("It works! 1.0");
+}
+if (a === b) {
+console.log("A equals B")
+}
+if (a > b && a === 15) {
+    console.log("A equals B amperand")
+}
+
+var password = "lemons";
+if (!password) { //Use "not" to allow this operator to work! This is also shorthanding our conditional.
+    console.log("Password is good to go!")
+}
+
+var password = "lemons";
+if (password.length > 3) {
+    console.log("Password is good!")
+}
+
+var password = "lemo";
+if (password.length < 3) {
+    console.log("Password is good!")
+}   else if (a === 11) {
+    console.log("Also do this!")
+}   else { // "Else" conditional statement MUST follow an "IF" conditional statement.
+    console.log("Password must use more than 3 characters.")
+    console.log("Defaults to this last one.")
+}   
+// Limited to 1 ELSE, and 1 IF. But you can use multiple "ELSE IF" in a string.
+
+var password = "le";
+if (password.length > 3) {
+    console.log("Password is good!")
+}   else if (password.length < 3 || password.length > 8) {
+    console.log("Do this first and stop here if this statement is true.")
+}   else if (a === 15) {
+    console.log("A is equal to 15")
+}   else {
+    console.log("Password must use more than 3 characters.")
+    console.log("Defaults to this last one.")
+}
+
+// "ELSE" is our false condition, if nothing else works.
+
+//Sometimes you need to be able to store multiple values. A single variable can store more than 4.2 billion items.
+
+// Array! Just another value 'type' but lets us store multiple of another value type!
+// Values are our reference for operands.
+var fruit = ["Banana", "Orange", "Apple", 15, 10, true, false];
+console.log(fruit[0]); // 0 refers to the index/element in an array.
+
+fruit[1] = "Kiwi";
+console.log(fruit);
+
+// Variables (vars) are temporary storage elements. Storing values will be talked about at a later time. 
+
+// Using "LOOPS" to help us in JS. One of which can list all array items. They will continually run, until a condition is met!
+// The "FOR LOOP"
+console.log(fruit[0])
+
+var count =0;
+console.log(count);
+count += 10;
+count += 10;
+count += 1;
+
+
+count++;
+
+for (var count = 0; count < 5; count++) {
+    console.log("Console this out")
+}
+
+for (var count = 0; count > 0; count++) {
+    console.log("Console this out")
+}
+
+
+console.log(fruit[2])
+
+var names = ["Lee", "Alex", "Joe", "Sam", "Ben"]
+
+for (var index = 0; index < 7; index++) {
+    console.log(fruit[index])
+}
+
+// To dynamically pull only the full index length once!
+for (var index = 0; index < fruit.length; index++) {
+    console.log(fruit[index])
+}
+
+// More practice
+for (var index = 0; index < names.length; index++) {
+    console.log(names[index]);
+}
+
+for (var index = 0; index < names.length; index++);
+    console.log(fruit[index]);
+    document.querySelector("body").insertAdjacentHTML("beforeend", "<p>" + fruit[index] + "</p>");
+
+
+// Prompts!
+var userAnswer = prompt("What is your Name?");
+console.log(userAnswer);
+
+
+
+// HOMEWORK HELPER
+var button = document.querySelector("#generate");
+console.log(button);
+
+// button.addEventListener("click", funtion() {
+// })
+
+function promptUser() {
+    console.log("Yep, it worked!")
+}
+
+button.addEventListener("click", promptUser)
+
+function promptUser() {
+    var passwordLength = prompt("Password length should be at least 8 characters.")
+    var specialCharacter = prompt("Needs to include at least one special character.")
+    var needLowercase = confirm("Needs to include at least one lowercase character.")
+
+    console.log(passwordLength, specialCharacter, needLowercase);
+} // Prompt always comes back as a string. Confirm comes back as a boolean. Everything needs to be inside the curly braces.
+
+
+var passwordResult = "";
+
+passwordResult += "blah"
+passwordResult += "cookie"
