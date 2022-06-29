@@ -147,7 +147,7 @@ if (a > b) {
     // console.alert("Hi there!")
 }
 
-// "IF" conditional statments work on the basis of truth!
+// "IF" conditional statements work on the basis of truth!
 if (a < b) {
     console.log("It works! 1.0");
 }
