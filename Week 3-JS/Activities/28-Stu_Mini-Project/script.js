@@ -22,7 +22,7 @@ if (play) {
 
 function start() {
 
-    playerchoice = prompt("Pick R, P, or S!")
+    playerchoice = prompt("Pick R, P, or S!").toUpperCase()
 
     // while (!goodanswer) {
     //     if (playerchoice.toUpperCase() === "R") {
