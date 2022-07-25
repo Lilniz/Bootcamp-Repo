@@ -1,7 +1,15 @@
 const Letter = require("./Letter");
 
-class Word {
-  
+class Word extends Letter {
+    constructor() {
+        super()
+    }
+    guessLetter() {
+    }
+    guessCorrect() {
+    }
+    getSolution () {
+    }
 }
 
 module.exports = Word;

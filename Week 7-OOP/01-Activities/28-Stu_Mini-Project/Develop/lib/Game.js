@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const chalk = require("chalk");
 const Word = require("./Word");
 const words = require("./words");
+const letter = require("./Letter")
 
 // The Game constructor is responsible for keeping score and controlling the flow of the overall game
 
@@ -19,6 +20,7 @@ class Game {
   // Creates a new Word object using a random word from the array, asks the user for their guess
   nextWord() {
     const randWord = words[Math.floor(Math.random() * words.length)];
+    console.log(randWord)
     this.currentWord = new Word(randWord);
     console.log("\n" + this.currentWord.toString() + "\n");
     this.makeGuess();
@@ -78,7 +80,7 @@ class Game {
           name: "choice",
           message: "Guess a letter!",
           // The users guess must be a number or letter
-          validate: val => /[a-z1-9]/gi.test(val),          
+          validate: val => /[a-z1-9]/gi.test(val), 
         }
       ])
       .then(val => {
