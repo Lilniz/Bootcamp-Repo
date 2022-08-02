@@ -1,38 +1,49 @@
 const submit_btn = document.querySelector("#submit");
 const todos_div = document.querySelector(".todos");
+const message_bar = document.querySelector(".message-bar");
+let todo_data;
 
-function outputToDos(data) {
+function showMessage(message) {
+  message_bar.innerText = message;
+  message_bar.classList.add("show");
+
+  setTimeout(() => {
+    message_bar.classList.remove("show");
+  }, 3500);
+}
+
+function outputToDos() {
   todos_div.innerHTML = "";
 
-  if (!data.length) {
+  if (!todo_data.length) {
     todos_div.innerHTML = `<p>No ToDos Added Yet</p>`;
   }
 
-  data.forEach((obj) => {
+  todo_data.forEach((obj) => {
     const html = `
       <div class="todo">
-        <h3>${obj.text}</h3>
+        <h3>${obj.words}</h3>
         <button data-id="${obj.id}">Delete</button>
       </div>
     `;
-
     todos_div.insertAdjacentHTML("beforeend", html);
   });
 }
 
 function getTodos() {
-  fetch("/api/todos")
+  return fetch("/api/todos")
     .then((res) => res.json())
     .then((todos) => {
-      outputToDos(todos);
+      todo_data = todos;
+      outputToDos();
     });
 }
 
 function addTodo(event) {
   const input = document.querySelector('input[name="somethin"]');
   const value = input.value;
-  const data = {
-    text: value,
+  const new_todo = {
+    words: value,
   };
 
   event.preventDefault();
@@ -43,12 +54,19 @@ function addTodo(event) {
       Accept: "application/json",
       "Content-type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(new_todo),
   })
     .then((res) => res.json())
-    .then((todos) => {
-      outputToDos(todos);
-      input.value = '';
+    .then((info) => {
+      new_todo.id = info.id;
+      todo_data.push(new_todo);
+      // .then((todos) => {
+      // console.log(todos);
+      getTodos();
+      //   .then(outputToDos);
+      outputToDos();
+      input.value = "";
+      showMessage(info.message);
     });
 }
 
@@ -61,7 +79,7 @@ function deleteTodo(event) {
   if (el.tagName === "BUTTON") {
     const id = el.dataset.id;
     const data = {
-      id: parseInt(id),
+      id: id,
     };
 
     fetch("/api/todos", {
@@ -73,10 +91,16 @@ function deleteTodo(event) {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((todos) => outputToDos(todos));
+      .then((info) => {
+        const todo = todo_data.find((todo_obj) => todo_obj.id == id);
+        const index = todo_data.indexOf(todo);
+        todo_data.splice(index, 1);
+        outputToDos();
+        showMessage(info.message);
+      });
   }
 }
 
-getTodos();
-submit_btn.addEventListener("click", addTodo);
-todos_div.addEventListener("click", deleteTodo);
+getTodos()
+  .then((todos) => submit_btn.addEventListener("click", addTodo))
+  .then((todos) => todos_div.addEventListener("click", deleteTodo));
